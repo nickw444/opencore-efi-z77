@@ -121,8 +121,9 @@ Current `ig-platform-id`: `0x01620006`. iGPU is being used as secondary with dGP
 
 
 **Known IDs**
+
 | ID | notes |
-| -- | -- |
+| --- | --- |
 | `0x01660000` | (desktop, 4 connectors, 24 MB) |
 | `0x01620006` | (desktop, 0 connectors, no fbmem, 0 bytes) |
 | `0x01620007` | (desktop, 0 connectors, no fbmem, 0 bytes) |
