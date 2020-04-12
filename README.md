@@ -9,7 +9,7 @@
 | Audio | Via VT2021 |
 | Network | Atheros AR8151 v2.0 |
 |  | BCM943602CS (Identified as BCM94360CD) AirPort Extreme  (0x14E4, 0x133) |
-| Bluetooth | BCM94360CD |
+| Bluetooth | BCM943602CS |
 | USB | Intel USB2/3 7 series chipset |
 |  | Jmicron Controller (lower 4 ports on rear), **Unsupported** |
 
