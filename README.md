@@ -64,7 +64,9 @@ Works OOB with [AppleALC](https://github.com/acidanthera/AppleALC/) using `injec
 
 ### USB
 
-USBInjectAll to customize port mapping. USB3 working out of the box.
+USBInjectAll to customize port mapping. USB3 "working" out of the box.
+
+USB3 front panel connector does not able to be able to keep USB3 HDD connected for any meaningful amount of time. Possibly an issue with power?
 
 Used [USBMap](https://github.com/corpnewt/USBMap) to generate an injector kext to remove UIA, however this motherboard has some funky internal hub setup, and I couldn't change the injected hub ports with this kext. Instead had to use a [customized DSDT](resources/DSDT/SSDT-UAIC.dsl)
 
