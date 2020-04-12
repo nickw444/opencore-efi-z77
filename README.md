@@ -124,10 +124,10 @@ Current `ig-platform-id`: `0x01620006`. iGPU is being used as secondary with dGP
 
 | ID | notes |
 | --- | --- |
-| `0x01660000` | (desktop, 4 connectors, 24 MB) |
-| `0x01620006` | (desktop, 0 connectors, no fbmem, 0 bytes) |
-| `0x01620007` | (desktop, 0 connectors, no fbmem, 0 bytes) |
-| `0x01620005` | (desktop, 3 connectors, 16 MB) |
+| `0x01660000` | desktop, 4 connectors, 24 MB |
+| `0x01620006` | desktop, 0 connectors, no fbmem, 0 bytes |
+| `0x01620007` | desktop, 0 connectors, no fbmem, 0 bytes |
+| `0x01620005` | desktop, 3 connectors, 16 MB |
 
 | AAPL,ig-platform-id | Memory (MB) | Pipes | Ports  | Comment
 | --- | --- | --- | --- | --- |
