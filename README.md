@@ -190,7 +190,7 @@ Card is Atheros AR8151 v2.0. Compiled my own version of AtherosL1cEthernet.kext 
 
 WIP: Currently causing KP when resuming from sleep.
 
-Current `ig-platform-id`: `0x0166000a`. iGPU is being used as secondary with dGPU as primary.
+Current `ig-platform-id`: `0x01620007`. iGPU is being used as secondary with dGPU as primary.
 
 
 **Known IDs**
@@ -204,10 +204,10 @@ Current `ig-platform-id`: `0x0166000a`. iGPU is being used as secondary with dGP
 | `0x01660004` | 32 | 3 | 1 | No DVI | |
 | `0x01620005` | 32 | 2 | 3 |  | |
 | `0x01620006` | 0  | 0 | 0 | No display | Cause panic on wake from sleep |
-| `0x01620007` | 0  | 0 | 0 | No display | |
+| **`0x01620007`** | 0  | 0 | 0 | No display | |
 | `0x01660008` | 64 | 3 | 3 |  | |
 | `0x01660009` | 64 | 3 | 3 |  | |
-| **`0x0166000a`** | 32 | 2 | 3 |  | |
+| `0x0166000a` | 32 | 2 | 3 |  | |
 | `0x0166000b` | 32 | 2 | 3 |  | |
 
 
