@@ -37,6 +37,7 @@
 * syslog | grep Wake
 * log show --style syslog | fgrep "Wake reason"
 * Turns out random wakes during the night was due to power nap. Disabled power nap in system preferences and appears to have solved the issue
+* Serial Port must be disabled in the BIOS [Source](https://www.insanelymac.com/forum/topic/339369-wake-issues-since-catalina/?tab=comments#comment-2691528), without this a KP when resuming from sleep will occur.
 
 ```
 jq -r 'map(.timestamp | match("\\d+\\-\\d+\\-\\d+\\s+\\d+:\\d+") | .string ) | .[]' | uniq
@@ -57,6 +58,76 @@ Things to check post-setup/upgrade
 OpenCore used as boot loader (Clover replacement). Bootloader config is revisioned via git: https://gitlab.com/nickw444/opencore-efi (this repo)
 
 ## Hardware
+
+### BIOS Settings
+
+Saved configurations can be found in [resources/bios-config/](resources/bios-config/)
+
+#### Diffable Settings:
+
+* Defaults as base
+
+##### BIOS Features
+* Fast Boot: Disabled
+* limit CPUID Max: Disabled
+* Execute Disable Bit: Enabled
+* Intel Virtualization Technology Enabled
+* OS Type: Windows 8 WHQL
+* CSM Support: Always
+    * UEFI Only
+    * LAN PXE Boot Option ROM: Disabled
+    * Storage Boot Option Control: Disabled
+* Other PCI Device ROM priority: UEFI OpROM
+* Network Stack: Disabled
+* Secure Boot: Enabled
+* Secure Boot Mode: Standard
+
+##### Peripherals
+
+* Sata Controllers: Enabled
+* Sata Mode Selection: AHCI
+* XHCI Pre Boot Driver: Enabled
+* xHCI Mode: AUTO
+    * HS Port 1 Switchable: Enabled
+    * HS Port 2 Switchable: Enabled
+    * HS Port 3 Switchable: Enabled
+    * HS Port 4 Switchable: Enabled
+    * xHCI Streams: Enabled
+* USB2.0 Controller: Enabled
+* Audio Controller: Enabled
+* Init Display First: Auto
+* Internal Graphics: Enabled
+* Internal Graphics Memory Size: 32M
+* DVMP Total Memory Size: 128M
+* Intel Rapid Start Technology: Disabled
+* Legacy USB Support: Enabled
+* XHCI Hand-off: Enabled
+* EHCI Hand-off Disabled
+* Port 60/64 Emulation: Disabled
+* USB Storage Devices:
+    * 1.00: A/uto
+    * Onboard USB3 Controller #1: Enabled
+    * OnBoard LAN Controller #1: Enabled
+    * PCIE Slot Configuration: AUTO
+* SUperIO Configuration
+    * Serial POrt A: Disabled
+* Intel SMart Connect Technology:
+    * ISCT Configuration: Disabled
+* Marvel ATA Controller Configuration
+    * GSATA Controller: AHCI Mode
+
+##### Power Management
+
+* Resume by Alarm: Disabled
+* ERP: Disabled
+* High Precision Event Timer: Enabled
+* Soft off by PWR BUTTON: Instanced Off
+* Internal Graphics Standby Mode: Enabled
+* Internal Graphics Deep Standby Mode: Enabled
+* AC Back: Always Off
+* Power On By Keyboard: Disabled
+* Power On By Mouse: Disabled
+
 
 ### Audio 📣
 
