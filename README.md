@@ -190,32 +190,25 @@ Card is Atheros AR8151 v2.0. Compiled my own version of AtherosL1cEthernet.kext 
 
 WIP: Currently causing KP when resuming from sleep.
 
-Current `ig-platform-id`: `0x01620006`. iGPU is being used as secondary with dGPU as primary.
+Current `ig-platform-id`: `0x0166000a`. iGPU is being used as secondary with dGPU as primary.
 
 
 **Known IDs**
 
-| ID | notes |
-| --- | --- |
-| `0x01660000` | desktop, 4 connectors, 24 MB |
-| `0x01620006` | desktop, 0 connectors, no fbmem, 0 bytes |
-| `0x01620007` | desktop, 0 connectors, no fbmem, 0 bytes |
-| `0x01620005` | desktop, 3 connectors, 16 MB |
-
-| AAPL,ig-platform-id | Memory (MB) | Pipes | Ports  | Comment
-| --- | --- | --- | --- | --- |
-| `0x01660000` | 96 | 3 | 4 |  |
-| `0x01660001` | 96 | 3 | 4 |  |
-| `0x01660002` | 64 | 3 | 1 | No DVI |
-| `0x01660003` | 64 | 2 | 2 |  |
-| `0x01660004` | 32 | 3 | 1 | No DVI |
-| `0x01620005` | 32 | 2 | 3 |  |
-| `0x01620006` | 0  | 0 | 0 | No display |
-| `0x01620007` | 0  | 0 | 0 | No display |
-| `0x01660008` | 64 | 3 | 3 |  |
-| `0x01660009` | 64 | 3 | 3 |  |
-| `0x0166000a` | 32 | 2 | 3 |  |
-| `0x0166000b` | 32 | 2 | 3 |  |
+| AAPL,ig-platform-id | Memory (MB) | Pipes | Ports  | Comment | Notes From Testing |
+| --- | --- | --- | --- | --- | --- |
+| `0x01660000` | 96 | 3 | 4 |  | |
+| `0x01660001` | 96 | 3 | 4 |  | |
+| `0x01660002` | 64 | 3 | 1 | No DVI | |
+| `0x01660003` | 64 | 2 | 2 |  | |
+| `0x01660004` | 32 | 3 | 1 | No DVI | |
+| `0x01620005` | 32 | 2 | 3 |  | |
+| `0x01620006` | 0  | 0 | 0 | No display | Cause panic on wake from sleep |
+| `0x01620007` | 0  | 0 | 0 | No display | |
+| `0x01660008` | 64 | 3 | 3 |  | |
+| `0x01660009` | 64 | 3 | 3 |  | |
+| **`0x0166000a`** | 32 | 2 | 3 |  | |
+| `0x0166000b` | 32 | 2 | 3 |  | |
 
 
 **Official Docs**
