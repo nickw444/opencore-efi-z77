@@ -247,7 +247,7 @@ Previously used a USB3 20 pin splitter to splice, but this caused issue with USB
 
 **Bluetooth Firmware Issues**
 
-This didn't seem necessary for getting BT support for Catalina, however I recall that once the firmware is loaded once the issue goes away. The issue may re-appear when returning back from Windows (which clobbers the firmware)
+This didn't seem necessary for getting BT support for Catalina, however I recall that once the firmware is loaded once the issue goes away. The issue may re-appear when returning back from Windows (which clobbers the firmware), and therefore BrcmPatchRAM might need to be re-introduced.
 
 Add device ID so the firmware is loaded at boot ([Source](https://github.com/the-darkvoid/BrcmPatchRAM/issues/35)):
 
