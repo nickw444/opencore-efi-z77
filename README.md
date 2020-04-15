@@ -36,8 +36,10 @@
 * Wake causes: https://www.cnet.com/news/how-to-find-system-wake-causes-in-os-x/
 * syslog | grep Wake
 * log show --style syslog | fgrep "Wake reason"
+* sudo pmset -g log
 * Turns out random wakes during the night was due to power nap. Disabled power nap in system preferences and appears to have solved the issue
 * Serial Port must be disabled in the BIOS [Source](https://www.insanelymac.com/forum/topic/339369-wake-issues-since-catalina/?tab=comments#comment-2691528), without this a KP when resuming from sleep will occur.
+* Even with serial port disabled, after longer periods of sleep, a KP is experienced during wake. It appears the boot arg `agdpmod=vit9696` has solved this ([source](https://www.reddit.com/r/hackintosh/comments/d9j622/catalina_hackintosh_working_fine_buuuut_two/f1ifpmy/))
 
 ```
 jq -r 'map(.timestamp | match("\\d+\\-\\d+\\-\\d+\\s+\\d+:\\d+") | .string ) | .[]' | uniq
