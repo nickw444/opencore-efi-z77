@@ -136,7 +136,7 @@ Works OOB with [AppleALC](https://github.com/acidanthera/AppleALC/) using `injec
 
 USBInjectAll (UIA) was previously used to inject ports using custom SSDT. However it is now possible to inject ports using a simple injector kext instead of using UIA.
 
-By using an injector kext, we eliminate the need to remap `EHC1` and `EHC2` to `EH01` and `EH02`. (This is unnecessary when using iMac13,2 anyway as it natively injects `EHC{1,2}`). Injected ports for different SMBIOS's can be found at [/System/Library/Extensions/IOUSBHostFamily.kext/Contents/PlugIns/AppleUSBHostPlatformProperties.kext/Contents/Info.plist](file:///System/Library/Extensions/IOUSBHostFamily.kext/Contents/PlugIns/AppleUSBHostPlatformProperties.kext/Contents/Info.plist).
+By using an injector kext, we eliminate the need to remap `EHC1` and `EHC2` to `EH01` and `EH02`. (This is unnecessary when using iMac13,2 anyway as it natively injects `EHC{1,2}`). Injected ports for different SMBIOS's can be found at `[/System/Library/Extensions/IOUSBHostFamily.kext/Contents/PlugIns/AppleUSBHostPlatformProperties.kext/Contents/Info.plist](file:///System/Library/Extensions/IOUSBHostFamily.kext/Contents/PlugIns/AppleUSBHostPlatformProperties.kext/Contents/Info.plist)`.
 
 The injector kext can be found in [OC/Kexts/USBMap.kext](OC/Kexts/USBMap.kext). This injector kext was created with [USBMap](https://github.com/corpnewt/USBMap), and then further modified by hand to reflect the vanilla ACPI layout of this board.
 
