@@ -208,6 +208,13 @@
 	<dict>
 		<key>Add</key>
 		<dict>
+			<key>PciRoot(0x0)/Pci(0x1A,0x0)</key>
+			<dict>
+				<key>acpi-wake-type</key>
+				<data>
+				AQ==
+				</data>
+			</dict>
 			<key>PciRoot(0x0)/Pci(0x1b,0x0)</key>
 			<dict>
 				<key>alc-layout-id</key>
