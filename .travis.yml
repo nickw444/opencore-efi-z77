@@ -1,0 +1,14 @@
+language: minimal
+
+before_deploy:
+  - mkdir -p /tmp/target/EFI
+  - cp -r APPLE BOOT OC /tmp/target/EFI
+  - cd /tmp/target
+  - zip -r /tmp/release.zip .
+deploy:
+  provider: releases
+  api_key:
+    secure: eUrnbSUf69mpbVprg/jjODBwDs7rADnYNuJpucXL7WMaIT+zg/0z+za395lM3R21Mhoj8rGityGLsR+E3Dkgyg/zs9ktbYsm8pJP2cGPEjHbiCAFlPrFJ0QCPx1QNSpylR6OrNNQ/SC2zELZW7MTL3KQv44LU01EsT0FdVqMsasf86XqGtqjmvio8O+9AC/VjyCI2e88BCwc/P71iMV4Vgs/Cqn3q4CAdMG7DRnwhYBnsfVdrxlo+lyl2+QrFd2ji6rY8ILKplRqn1jGHzm1zmLP/Ckj/Ago02anzvex5IPMV2iXg7OldN8rupnX7Q7QjO6DSRu01ZN5pdNekjuzyBGjIVSSXfW6/PkCxk5NDH/XCEwOHIdgXk+b4P0DEn+pPhxwy7AJWlNMa3xuNM04FwlcKk6c+EIpDObjweQ1Ub3Ehe1GsOPh2lpVteMpXUrwXF0vvRqb2r2Svu1AuZ4IBc8Nm4jH5XOr6AOCcip4qbwgkAIajmujkbaToZ/UVjrqPlAsX54DakZ+aYyvWeml3c3OvBsrTh9r/4jnlyCfb17CvIYdL9lHD5E5zJjC+prmSP9piq5ZqNdI6HwvnG5dPpdZ//ykTnCnaZylWH6N+jGt96/RncaZL5+J6nI6TtTnKIP3+hzVEEvUQO5PPSIWT3/D0wljJPJlP7wc7blnnjc=
+  file: '/tmp/release.zip'
+  on:
+    repo: nickw444/opencore-efi
