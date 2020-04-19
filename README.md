@@ -134,48 +134,64 @@ Works OOB with [AppleALC](https://github.com/acidanthera/AppleALC/) using `injec
 
 ### USB
 
-USBInjectAll to customize port mapping. USB3 "working" out of the box.
+USBInjectAll (UIA) was previously used to inject ports using custom SSDT. However it is now possible to inject ports using a simple injector kext instead of using UIA.
 
-USB3 front panel connector does not able to be able to keep USB3 HDD connected for any meaningful amount of time. Possibly an issue with power?
+By using an injector kext, we eliminate the need to remap `EHC1` and `EHC2` to `EH01` and `EH02`. (This is unnecessary when using iMac13,2 anyway as it natively injects `EHC{1,2}`). Injected ports for different SMBIOS's can be found at [/System/Library/Extensions/IOUSBHostFamily.kext/Contents/PlugIns/AppleUSBHostPlatformProperties.kext/Contents/Info.plist](file:///System/Library/Extensions/IOUSBHostFamily.kext/Contents/PlugIns/AppleUSBHostPlatformProperties.kext/Contents/Info.plist).
 
-Used [USBMap](https://github.com/corpnewt/USBMap) to generate an injector kext to remove UIA, however this motherboard has some funky internal hub setup, and I couldn't change the injected hub ports with this kext. Instead had to use a [customized DSDT](resources/DSDT/SSDT-UAIC.dsl)
+The injector kext can be found in [OC/Kexts/USBMap.kext](OC/Kexts/USBMap.kext). This injector kext was created with [USBMap](https://github.com/corpnewt/USBMap), and then further modified by hand to reflect the vanilla ACPI layout of this board.
 
-USB Map plist for USBMap tool can be found in [resources/USBMap/USB.plist](resources/USBMap/USB.plist).
+The injector kext being used has a few different entries:
 
+* `iMac13,2-EHC1`: EHC1 root controller. Exposes a single, internal hub port
+* `iMac13,2-EHC2`: EHC2 root controller. Exposes a single, internal hub port
+* `iMac13,2-InternalHub-EHC1`: EHC1 controller's root level hub
+* `iMac13,2-InternalHub-EHC2`: EHC2 controller's root level hub
+* `iMac13,2-XHC`: XHC root controller
+
+
+#### Quirks:
+
+* The GA-Z77X-D3H is [notorious](https://forums.tomshardware.com/threads/gigabyte-z77-d3h-usb-3-0-external-hdd-detection-issue.394328/) for having [power delivery](https://www.overclock.net/forum/6-intel-motherboards/1314782-front-usb-3-0-fails-gb-ga-z77x-d3h.html) issues on the internal front-panel header. After a fair bit of research this is found to be a common issue and is the reason for random USB3 disconnection during use. This issue is reproducable in both Windows and OSX
+* The 7-series USB chipset has top level hubs on the `EHC{1,2}` busses. These need to be injected with a special `AppleUSB20InternalIntelHub` record, as opposed to the top level controllers registered with `AppleUSBEHCIPCI`.
+* `iMac13,2` SMBIOS already has an `iMac13,2-InternalHub-EHC1` registered at location `487587840`, causing the hub port properties to be merged. This results in extraneous, unusable `PRT1` and `PRT3` injected ports. I have not yet found a way to stop injection of these ports.
+* XHCI/EHCI routing on this board is very weird. Regardless of selected BIOS settings for XHCI/EHCI, both rear panel USB3 ports are routed via the EHC controller when a USB2 device is connected. This is observed in both Windows and MacOS.
+* Due to the above routing weirdness, and the requirement for the Bluetooth controller to sit on the XHC bus as an "internal port", it's necessary for one of the front panel USB3 ports to be re-purposed as an internal port.
+
+Other Resources:
+
+* [(deleted) USB guide from dortania](https://github.com/dortania/OpenCore-Desktop-Guide/blob/ea34ae5bc28f5304d28c864d547505602f18de5a/post-install/usb.md#intel-usb-mapping)
+* [USBMap guide](https://github.com/corpnewt/USBMap)
 
 #### Port Mapping
 
-**Front Panel**
+**PCI/ACPI Map**
 
-From left to right:
-
-* P1: (Spliced internally, used for BT Controller - see below)
-    * USB2: HS01 (routed via XHC controller)
-    * USB3: SS01
-* P2:
-    * USB2: HS02 (routed via XHC controller)
-    * USB3: SS02
-* P3:
-    * USB2: PR11 (Internal hub), HP15
-* P3:
-    * USB2: PR11 (Internal hub), HP16
-
-**Back Panel**
-
-From top to bottom, left to right
-
-* P1:
-    * USB2: PR21 (Internal hub), HP26
-* P2:
-    * USB2: PR21 (Internal hub), HP25
-* P3:
-    * USB2: PR21 (Internal hub), HP24
-    * USB3: SS03
-* P4:
-    * USB2: PR21 (Internal hub), HP23
-    * USB3: SS04
+```
+├── EHC1 (Bus servicing internal USB2 headers)
+│   └── PRT1 (Internal Hub, location 0x1d100000)
+│       ├── PRT5 (Front Panel P3)
+│       ├── PRT6 (Front Panel P4)
+│       ├── PRT7 (Front Panel P5 - Card Reader)
+│       └── PRT8 (Front Panel P6 - Card Reader USB)
+├── EHC2 (Bus servicing back panel USB2)
+│   └── PRT1 (Internal Hub, location 0x1a100000)
+│       ├── PRT3 (Back Panel P4)
+│       ├── PRT4 (Back Panel P3)
+│       ├── PRT5 (Back Panel P2)
+│       └── PRT6 (Back Panel P1)
+└── XHC
+    ├── HS01 (Front Panel P1 USB2 - Spliced internally, for BT Controller - see below)
+    ├── HS02 (Front Panel P2 USB2)
+    ├── SS01 (Front Panel P1 USB3)
+    ├── SS02 (Front Panel P2 USB3)
+    ├── SS03 (Back Panel P3 USB3)
+    └── SS04 (Back Panel P4 USB3)
+```
 
 ![USB Map](resources/img/usb-map.png)
+
+The above listed ports/locations are found by temporarily using USBInjectAll (with `EHCX` -> `EH0X` remap) to inject all ports to find their location IDs. These IDs can then be worked into the aformentioned injector kext.
+
 
 ### Ethernet 🕸
 
