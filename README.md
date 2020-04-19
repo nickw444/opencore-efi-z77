@@ -13,9 +13,6 @@
 | USB | Intel USB2/3 7 series chipset |
 |  | Jmicron Controller (lower 4 ports on rear), **Unsupported** |
 
-## To do
-
-* Fix kernel panic on sleep wake
 
 ## Guides
 
@@ -100,7 +97,7 @@ Saved configurations can be found in [resources/bios-config/](resources/bios-con
 * Init Display First: Auto
 * Internal Graphics: Enabled
 * Internal Graphics Memory Size: 32M
-* DVMP Total Memory Size: 128M
+* DVMT Total Memory Size: MAX
 * Intel Rapid Start Technology: Disabled
 * Legacy USB Support: Enabled
 * XHCI Hand-off: Enabled
@@ -190,8 +187,6 @@ Card is Atheros AR8151 v2.0. Compiled my own version of AtherosL1cEthernet.kext 
 
 ### Intel GPU HD4000 🖥
 
-WIP: Currently causing KP when resuming from sleep.
-
 Current `ig-platform-id`: `0x01620007`. iGPU is being used as secondary with dGPU as primary.
 
 
@@ -205,8 +200,8 @@ Current `ig-platform-id`: `0x01620007`. iGPU is being used as secondary with dGP
 | `0x01660003` | 64 | 2 | 2 |  | |
 | `0x01660004` | 32 | 3 | 1 | No DVI | |
 | `0x01620005` | 32 | 2 | 3 |  | |
-| `0x01620006` | 0  | 0 | 0 | No display | Cause panic on wake from sleep |
-| **`0x01620007`** | 0  | 0 | 0 | No display | |
+| `0x01620006` | 0  | 0 | 0 | No display | Panic on wake from sleep without `agdpmod=vit9696` |
+| **`0x01620007`** | 0  | 0 | 0 | No display | Panic on wake from sleep without `agdpmod=vit9696` |
 | `0x01660008` | 64 | 3 | 3 |  | |
 | `0x01660009` | 64 | 3 | 3 |  | |
 | `0x0166000a` | 32 | 2 | 3 |  | |
