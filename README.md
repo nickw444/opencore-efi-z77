@@ -11,7 +11,7 @@
 |  | BCM943602CS (Identified as BCM94360CD) AirPort Extreme  (0x14E4, 0x133) |
 | Bluetooth | BCM943602CS |
 | USB | Intel USB2/3 7 series chipset |
-|  | Jmicron Controller (lower 4 ports on rear), **Unsupported** |
+|  | VIA VL800 (lower 4 ports on rear), **Unsupported** |
 
 
 ## Guides
