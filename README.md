@@ -1,6 +1,6 @@
-# GA-Z77X-D3H Hackintosh Notes
+# GA-Z77X-D3H Hackintosh 🍎
 
-## Hardware Details
+## 🖥 Hardware Details
 | Component | Details  |
 |---|---|
 |Mobo| GA-Z77X-D3H|
@@ -29,19 +29,19 @@ Instead you must either:
 * Download the latest "release" from the [releases](https://github.com/nickw444/opencore-efi/releases) page. New releases are built on every commit pushed to this repo.
 
 
-## Guides
+## ❓ Guides
 
 * https://desktop.dortania.ml/
 * https://usb-map.gitbook.io/project/
 * https://github.com/corpnewt/USBMap
 
-## Past Success for similar board
+## ✅ Past Success for similar board
 
 * https://www.reddit.com/r/hackintosh/comments/7cuccm/gaz77xd3h_high_sierra_success/
 * https://www.reddit.com/r/hackintosh/comments/g3b9mn/gaz77xd3h_catalina_success/
 * https://www.tonymacx86.com/threads/near-perfect-high-sierra-setup-on-z77x-ud5h-ivy-bridge-i5-rx-560.252663/
 
-## Sleep/Wake
+## 💤 Sleep/Wake
 
 * Disable hibernate
     * sudo pmset -a autopoweroff 0
@@ -60,7 +60,7 @@ jq -r 'map(.timestamp | match("\\d+\\-\\d+\\-\\d+\\s+\\d+:\\d+") | .string ) | .
 log show --start "2019-05-02 12:00:00" --end "2019-05-02 18:00:00"  --style json | jq -r 'map(.timestamp | match("\\d+\\-\\d+\\-\\d+\\s+\\d+:\\d+") | .string ) | .[]' | uniq
 ```
 
-## Post Setup Checks
+## ✔️ Post Setup Checks
 
 Things to check post-setup/upgrade
 
@@ -68,11 +68,11 @@ Things to check post-setup/upgrade
 * Ensure CPU power management is working correctly
 * Check USB Mapping is correct in IOReg/IORegistryExplorer
 
-## Bootloader
+## 🥾 Bootloader
 
 OpenCore used as boot loader (Clover replacement). Bootloader config is revisioned via git: https://gitlab.com/nickw444/opencore-efi (this repo)
 
-## Hardware
+## 🖥 Hardware
 
 ### BIOS Settings
 
@@ -144,11 +144,11 @@ Saved configurations can be found in [resources/bios-config/](resources/bios-con
 * Power On By Mouse: Disabled
 
 
-### Audio 📣
+### 🔊 Audio
 
 Works OOB with [AppleALC](https://github.com/acidanthera/AppleALC/) using `inject=5`
 
-### USB
+### ⌨️ USB
 
 USBInjectAll (UIA) was previously used to inject ports using custom SSDT. However it is now possible to inject ports using a simple injector kext instead of using UIA.
 
@@ -209,7 +209,7 @@ Other Resources:
 The above listed ports/locations are found by temporarily using USBInjectAll (with `EHCX` -> `EH0X` remap) to inject all ports to find their location IDs. These IDs can then be worked into the aformentioned injector kext.
 
 
-### Ethernet 🕸
+### 🕸 Ethernet
 
 Card is Atheros AR8151 v2.0. Compiled my own version of AtherosL1cEthernet.kext against High Sierra frameworks. Works in Mojave.
 
@@ -217,7 +217,7 @@ Card is Atheros AR8151 v2.0. Compiled my own version of AtherosL1cEthernet.kext 
 * https://www.tonymacx86.com/threads/i-need-kext-for-ethernet-with-mojave-with-ga-z77-ds3h.270126/
 * https://www.tonymacx86.com/threads/atherosl1cethernet-tweaked-for-high-sierra.236867/
 
-### Intel GPU HD4000 🖥
+### 🖥 Intel GPU HD4000
 
 Current `ig-platform-id`: `0x01620007`. iGPU is being used as secondary with dGPU as primary.
 
@@ -252,14 +252,14 @@ Current `ig-platform-id`: `0x01620007`. iGPU is being used as secondary with dGP
 * https://www.reddit.com/r/hackintosh/comments/7m8uah/enabling_igpu_gpu/
 * https://www.tonymacx86.com/threads/dual-graphics-headless-igpu-amd-hardware-acceleration-on-mojave.267554/
 
-### CPU Power Management
+### 🔌 CPU Power Management
 
 * ssdtprGen.sh https://github.com/Piker-Alpha/ssdtPRGen.sh
 * Confirm with https://github.com/Piker-Alpha/AppleIntelInfo
 * https://www.insanelymac.com/forum/topic/304369-how-to-check-your-states-%E2%80%93-using-aicpminfo-msrdumper-or-appleintelinfo/
 
 
-### Bluetooth / WiFi w/ Broadcom Card
+### 📶 Bluetooth / WiFi w/ Broadcom Card
 
 BCM943602CS: 802.11ac 3x3, (1.3Gbps / 5GHz) + Bluetooth 4.1. The module will be applied in MacBook Pro computers (2015)
 
