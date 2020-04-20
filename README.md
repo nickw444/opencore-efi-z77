@@ -120,12 +120,12 @@ Saved configurations can be found in [resources/bios-config/](resources/bios-con
 * EHCI Hand-off Disabled
 * Port 60/64 Emulation: Disabled
 * USB Storage Devices:
-    * 1.00: A/uto
+    * 1.00: Auto
     * Onboard USB3 Controller #1: Enabled
-    * OnBoard LAN Controller #1: Enabled
+    * Onboard LAN Controller #1: Enabled
     * PCIE Slot Configuration: AUTO
-* SUperIO Configuration
-    * Serial POrt A: Disabled
+* SuperIO Configuration
+    * Serial Port A: Disabled
 * Intel SMart Connect Technology:
     * ISCT Configuration: Disabled
 * Marvel ATA Controller Configuration
