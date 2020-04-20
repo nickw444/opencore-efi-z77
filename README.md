@@ -15,7 +15,7 @@
 
 ## ⚠️⚠️ Warning ⚠️⚠️
 
-This is the EFI configuration for my very specific combination of hardware. It comes with absolutely no guarantees whatsoever.
+This is the EFI configuration for my **very specific** combination of hardware. It comes with **absolutely no guarantees** whatsoever.
 
 It is extremely unlikely that this configuration will even work for you, even if your hardware combination is very similar. Please use it as a learning/reference resource only.
 
