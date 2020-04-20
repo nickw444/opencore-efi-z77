@@ -13,6 +13,21 @@
 | USB | Intel USB2/3 7 series chipset |
 |  | VIA VL800 (lower 4 ports on rear), **Unsupported** |
 
+## ⚠️⚠️ Warning ⚠️⚠️
+
+This is the EFI configuration for my very specific combination of hardware. It comes with absolutely no guarantees whatsoever.
+
+It is extremely unlikely that this configuration will even work for you, even if your hardware combination is very similar. Please use it as a learning/reference resource only.
+
+### Obtaining a copy
+
+It is not possible to just "download" this repository as a zip from the green button that Github provides, as it uses `git-lfs` to manage binary assets.
+
+Instead you must either:
+
+* Clone the repository to your machine using `git` and configure the `git-lfs` hooks to pull binary data
+* Download the latest "release" from the [releases](https://github.com/nickw444/opencore-efi/releases) page. New releases are built on every commit pushed to this repo.
+
 
 ## Guides
 
@@ -23,6 +38,7 @@
 ## Past Success for similar board
 
 * https://www.reddit.com/r/hackintosh/comments/7cuccm/gaz77xd3h_high_sierra_success/
+* https://www.reddit.com/r/hackintosh/comments/g3b9mn/gaz77xd3h_catalina_success/
 * https://www.tonymacx86.com/threads/near-perfect-high-sierra-setup-on-z77x-ud5h-ivy-bridge-i5-rx-560.252663/
 
 ## Sleep/Wake
