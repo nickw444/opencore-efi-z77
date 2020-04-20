@@ -12,3 +12,6 @@ deploy:
   file: '/tmp/release.zip'
   on:
     repo: nickw444/opencore-efi
+  tag_name: "release-$TRAVIS_COMMIT"
+  name: "Release $TRAVIS_COMMIT"
+  body: "$TRAVIS_COMMIT_MESSAGE"
