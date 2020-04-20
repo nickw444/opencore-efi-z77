@@ -1,7 +1,5 @@
 # GA-Z77X-D3H Hackintosh 🍎
 
-![My setup](resources/img/desk.jpg)
-
 ## 🖥 Hardware Details
 | Component | Details  |
 |---|---|
@@ -14,6 +12,9 @@
 | Bluetooth | BCM943602CS |
 | USB | Intel USB2/3 7 series chipset |
 |  | VIA VL800 (lower 4 ports on rear), **Unsupported** |
+
+![My setup](resources/img/desk.jpg)
+
 
 ## ⚠️⚠️ Warning ⚠️⚠️
 
@@ -30,6 +31,18 @@ Instead you must either:
 * Clone the repository to your machine using `git` and configure the `git-lfs` hooks to pull binary data
 * Download the latest "release" from the [releases](https://github.com/nickw444/opencore-efi/releases) page. New releases are built on every commit pushed to this repo.
 
+
+### EFI, in git?
+
+For my sanity, I have revisioned my `/Volumes/EFI/EFI` directory under git. This allows me to easily diff any changes I have made and easily roll back at any point in time.
+
+However, typically the `EFI` partition is a tiny, around 200MB in size. This does not work well when there is a `.git` directory living inside, as every revision of binary files will be stored in here, easily filling up the space.
+
+As a workaround, [it is possible](https://stackoverflow.com/a/40561395/913363) to place the `.git` directory across different mount-points by instead creating a file, `.git` and pointing it to the real `.git` location with the following directive:
+
+```
+gitdir: /Users/nickw/repos/opencore-efi/.git
+```
 
 ## ❓ Guides
 
