@@ -58,7 +58,7 @@ The hooks can be installed by running
 
 ## ❓ Guides
 
-* https://desktop.dortania.ml/
+* https://dortania.github.io/OpenCore-Desktop-Guide/
 * https://usb-map.gitbook.io/project/
 * https://github.com/corpnewt/USBMap
 
