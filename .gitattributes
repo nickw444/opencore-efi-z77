@@ -8,3 +8,4 @@ OC/ACPI/* filter=lfs diff=lfs merge=lfs -text
 OC/OpenCore.efi filter=lfs diff=lfs merge=lfs -text
 resources/bios-config/*.bin filter=lfs diff=lfs merge=lfs -text
 OC/config.plist filter=oc-private -text
+OC/Bootstrap/Bootstrap.efi filter=lfs diff=lfs merge=lfs -text
