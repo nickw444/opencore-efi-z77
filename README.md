@@ -22,15 +22,6 @@ This is the EFI configuration for my **very specific** combination of hardware. 
 
 It is extremely unlikely that this configuration will even work for you, even if your hardware combination is very similar. Please use it as a learning/reference resource only.
 
-### Obtaining a copy
-
-It is not possible to just "download" this repository as a zip from the green button that Github provides, as it uses `git-lfs` to manage binary assets.
-
-Instead you must either:
-
-* Clone the repository to your machine using `git` and configure the `git-lfs` hooks to pull binary data
-* Download the latest "release" from the [releases](https://github.com/nickw444/opencore-efi/releases) page. New releases are built on every commit pushed to this repo.
-
 
 ### EFI, in git?
 
