@@ -2,7 +2,7 @@ language: minimal
 
 before_deploy:
   - mkdir -p /tmp/target/EFI
-  - cp -r APPLE BOOT OC /tmp/target/EFI
+  - cp -r BOOT OC /tmp/target/EFI
   - cd /tmp/target
   - zip -r /tmp/release.zip .
 deploy:
