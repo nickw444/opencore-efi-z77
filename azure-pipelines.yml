@@ -1,8 +1,12 @@
+
 trigger:
-  pr: none
+  branches: 
+    include: []
   tags:
     include:
       - '*'
+
+pr: none
 
 schedules:
 - cron: '0 3 * * 6'
