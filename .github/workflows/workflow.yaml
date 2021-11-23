@@ -1,12 +1,10 @@
-on:
-  push:
-    branches: []
-    tags:
+on: push
 
 jobs:
   release:
     name: "Release"
     runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags')
     steps:
       - uses: actions/checkout@v2
       - name: "Prepare EFI"
