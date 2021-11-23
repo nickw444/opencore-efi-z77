@@ -1,0 +1,21 @@
+on:
+  push:
+    tags:
+
+jobs:
+  release:
+    name: "Release"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: "Prepare EFI"
+        run: |
+          mkdir -p /tmp/target/EFI
+          cp -r BOOT OC /tmp/target/EFI
+          cd /tmp/target
+          zip -r /tmp/release.zip .
+      - name: Create Github Release
+        uses: softprops/action-gh-release@v1
+        with:
+          generate_release_notes: true
+          files: /tmp/release.zip
