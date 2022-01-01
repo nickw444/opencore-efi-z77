@@ -1,4 +1,4 @@
-# GA-Z77X-D3H Hackintosh 🍎
+# GA-Z77X-D3H Monterey Hackintosh 🍎
 
 ## 🖥 Hardware Details
 | Component | Details  |
@@ -55,15 +55,36 @@ The hooks can be installed by running
 
 ## ✅ Past Success for similar board
 
+* https://www.tonymacx86.com/threads/robbishs-8yr-old-atx-ivybridge-hackintosh-ga-z77-ds3h-i5-3570k-hd-4000-opencore-macos-big-sur.311037/
 * https://www.reddit.com/r/hackintosh/comments/7cuccm/gaz77xd3h_high_sierra_success/
 * https://www.reddit.com/r/hackintosh/comments/g3b9mn/gaz77xd3h_catalina_success/
 * https://www.tonymacx86.com/threads/near-perfect-high-sierra-setup-on-z77x-ud5h-ivy-bridge-i5-rx-560.252663/
 
 ## 💤 Sleep/Wake
 
-* Disable hibernate
-    * sudo pmset -a autopoweroff 0
-    * sudo pmset -a hibernatemode 0
+After installing Monterey, sleep was completely broken, even after re-mapping USB ports. I narrowed this down to being due to the iGPU (HD4000) being enabled, but unsupported by Monterey. This can be solved by either:
+
+* Disabling iGPU in the BIOS
+* Disabling iGPU via PCI injection in OpenCore configuration:
+
+```xml
+<key>PciRoot(0x0)/Pci(0x2,0x0)</key>
+<dict>
+        <key>disable-gpu</key>
+        <data>AQAAAA==</data>
+</dict>
+```
+
+* Prepare `pmset` params ([source](https://dortania.github.io/OpenCore-Post-Install/universal/sleep.html#preparations)):
+   * `sudo pmset autopoweroff 0`
+   * `sudo pmset powernap 0`
+   * `sudo pmset standby 0`
+   * `sudo pmset proximitywake 0`
+   * `sudo pmset tcpkeepalive 0`
+
+
+**Troubleshooting**
+
 * Wake causes: https://www.cnet.com/news/how-to-find-system-wake-causes-in-os-x/
 * syslog | grep Wake
 * log show --style syslog | fgrep "Wake reason"
@@ -170,24 +191,12 @@ Works OOB with [AppleALC](https://github.com/acidanthera/AppleALC/) using `injec
 
 USBInjectAll (UIA) was previously used to inject ports using custom SSDT. However it is now possible to inject ports using a simple injector kext instead of using UIA.
 
-By using an injector kext, we eliminate the need to remap `EHC1` and `EHC2` to `EH01` and `EH02`. (This is unnecessary when using iMac13,2 anyway as it natively injects `EHC{1,2}`). Injected ports for different SMBIOS's can be found at [`/System/Library/Extensions/IOUSBHostFamily.kext/Contents/PlugIns/AppleUSBHostPlatformProperties.kext/Contents/Info.plist`](file:///System/Library/Extensions/IOUSBHostFamily.kext/Contents/PlugIns/AppleUSBHostPlatformProperties.kext/Contents/Info.plist).
-
-The injector kext can be found in [OC/Kexts/USBMap.kext](OC/Kexts/USBMap.kext). This injector kext was created with [USBMap](https://github.com/corpnewt/USBMap), and then further modified by hand to reflect the vanilla ACPI layout of this board.
-
-The injector kext being used has a few different entries:
-
-* `iMac13,2-EHC1`: EHC1 root controller. Exposes a single, internal hub port
-* `iMac13,2-EHC2`: EHC2 root controller. Exposes a single, internal hub port
-* `iMac13,2-InternalHub-EHC1`: EHC1 controller's root level hub
-* `iMac13,2-InternalHub-EHC2`: EHC2 controller's root level hub
-* `iMac13,2-XHC`: XHC root controller
-
+The injector kext can be found in [OC/Kexts/USBMap.kext](OC/Kexts/USBMap.kext). This injector kext was created with [USBMap](https://github.com/corpnewt/USBMap) via [this guide](https://dortania.github.io/OpenCore-Post-Install/usb/intel-mapping/intel.html).
 
 #### Quirks:
 
 * The GA-Z77X-D3H is [notorious](https://forums.tomshardware.com/threads/gigabyte-z77-d3h-usb-3-0-external-hdd-detection-issue.394328/) for having [power delivery](https://www.overclock.net/forum/6-intel-motherboards/1314782-front-usb-3-0-fails-gb-ga-z77x-d3h.html) issues on the internal front-panel header. After a fair bit of research this is found to be a common issue and is the reason for random USB3 disconnection during use. This issue is reproducable in both Windows and OSX
 * The 7-series USB chipset has top level hubs on the `EHC{1,2}` busses. These need to be injected with a special `AppleUSB20InternalIntelHub` record, as opposed to the top level controllers registered with `AppleUSBEHCIPCI`.
-* `iMac13,2` SMBIOS already has an `iMac13,2-InternalHub-EHC1` registered at location `487587840`, causing the hub port properties to be merged. This results in extraneous, unusable `PRT1` and `PRT3` injected ports. I have not yet found a way to stop injection of these ports.
 * XHCI/EHCI routing on this board is very weird. Regardless of selected BIOS settings for XHCI/EHCI, both rear panel USB3 ports are routed via the EHC controller when a USB2 device is connected. This is observed in both Windows and MacOS.
 * Due to the above routing weirdness, and the requirement for the Bluetooth controller to sit on the XHC bus as an "internal port", it's necessary for one of the front panel USB3 ports to be re-purposed as an internal port.
 
@@ -229,7 +238,7 @@ The above listed ports/locations are found by temporarily using USBInjectAll (wi
 
 ### 🕸 Ethernet
 
-Card is Atheros AR8151 v2.0. Compiled my own version of AtherosL1cEthernet.kext against High Sierra frameworks. Works in Mojave.
+Card is Atheros AR8151 v2.0. Compiled my own version of AtherosL1cEthernet.kext against High Sierra frameworks. Works in Mojave and Monterey.
 
 * https://github.com/al3xtjames/AtherosL1cEthernet
 * https://www.tonymacx86.com/threads/i-need-kext-for-ethernet-with-mojave-with-ga-z77-ds3h.270126/
@@ -237,8 +246,21 @@ Card is Atheros AR8151 v2.0. Compiled my own version of AtherosL1cEthernet.kext 
 
 ### 🖥 Intel GPU HD4000
 
-Current `ig-platform-id`: `0x01620007`. iGPU is being used as secondary with dGPU as primary.
+HD4000 is no longer supported in Monterey, and thus must be disabled, else risk problems with sleep. This can be done by:
 
+* Disabling iGPU in the BIOS
+* Disabling iGPU via PCI injection in OpenCore configuration:
+
+```xml
+<key>PciRoot(0x0)/Pci(0x2,0x0)</key>
+<dict>
+        <key>disable-gpu</key>
+        <data>AQAAAA==</data>
+</dict>
+```
+
+**Before Monterey**
+Current `ig-platform-id`: `0x01620007`. iGPU is being used as secondary with dGPU as primary.
 
 **Known IDs**
 
@@ -284,7 +306,6 @@ BCM943602CS: 802.11ac 3x3, (1.3Gbps / 5GHz) + Bluetooth 4.1. The module will be 
 * BCM43602 14e4:43ba supported in 3.17+ (brcmfmac)
 * BCM43602 14e4:43bb 2.4GHz device, supported in 3.19+
 * BCM43602 14e4:43bc 5GHz device, supported in 3.19+
-
 
 Bluetooth USB connection must be connected to XHC bus and marked as internal (DSDT type 255), otherwise this will cause random wake as soon as machine goes to sleep. Recall all USB ports on the back panel are routed via EH02 via a hub, so we cannot use that, and instead must splice the internal USB ([source](https://github.com/al3xtjames/Gigabyte-GA-Z77X-macOS-Install/issues/65#issuecomment-312686694))
 
@@ -334,4 +355,3 @@ Add device ID so the firmware is loaded at boot ([Source](https://github.com/the
 > Log in and out of icloud on all your devices. After that, wait a couple hours / days and literally do nothing, it'll start working out of thin air. Happened to countless users including me with a native Fenvi t919.
 
 [Source](https://www.reddit.com/r/hackintosh/comments/9ynok0/handoffcontinuity_not_working_after_wifibluetooth/ea3lrkp/)
-
