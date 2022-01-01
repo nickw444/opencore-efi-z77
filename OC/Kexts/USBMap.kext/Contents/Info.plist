@@ -22,22 +22,30 @@
 	<string>1.0</string>
 	<key>IOKitPersonalities</key>
 	<dict>
-		<key>iMac13,2-EHC1</key>
+		<key>MacPro6,1-EH01</key>
 		<dict>
 			<key>CFBundleIdentifier</key>
-			<string>com.apple.driver.AppleUSBMergeNub</string>
+			<string>com.apple.driver.AppleUSBHostMergeProperties</string>
 			<key>IOClass</key>
-			<string>AppleUSBMergeNub</string>
-			<key>IONameMatch</key>
-			<string>EHC1</string>
+			<string>AppleUSBHostMergeProperties</string>
+			<key>IOParentMatch</key>
+			<dict>
+				<key>IOPropertyMatch</key>
+				<dict>
+					<key>pcidebug</key>
+					<string>0:29:0</string>
+				</dict>
+			</dict>
 			<key>IOProviderClass</key>
 			<string>AppleUSBEHCIPCI</string>
 			<key>IOProviderMergeProperties</key>
 			<dict>
 				<key>kUSBMuxEnabled</key>
-				<true/>
+				<false/>
 				<key>port-count</key>
-				<data>AQAAAA==</data>
+				<data>
+				AQAAAA==
+				</data>
 				<key>ports</key>
 				<dict>
 					<key>PRT1</key>
@@ -45,149 +53,337 @@
 						<key>UsbConnector</key>
 						<integer>255</integer>
 						<key>port</key>
-						<data>AQAAAA==</data>
+						<data>
+						AQAAAA==
+						</data>
 					</dict>
-				</dict>
-			</dict>
-			<key>model</key>
-			<string>iMac13,2</string>
-		</dict>
-		<key>iMac13,2-EHC2</key>
-		<dict>
-			<key>CFBundleIdentifier</key>
-			<string>com.apple.driver.AppleUSBMergeNub</string>
-			<key>IOClass</key>
-			<string>AppleUSBMergeNub</string>
-			<key>IONameMatch</key>
-			<string>EHC2</string>
-			<key>IOProviderClass</key>
-			<string>AppleUSBEHCIPCI</string>
-			<key>IOProviderMergeProperties</key>
-			<dict>
-				<key>kUSBMuxEnabled</key>
-				<true/>
-				<key>port-count</key>
-				<data>AQAAAA==</data>
-				<key>ports</key>
-				<dict>
-					<key>PRT1</key>
+					<key>PRT2</key>
 					<dict>
+						<key>#port</key>
+						<data>
+						AgAAAA==
+						</data>
 						<key>UsbConnector</key>
-						<integer>255</integer>
-						<key>port</key>
-						<data>AQAAAA==</data>
-					</dict>
-				</dict>
-			</dict>
-			<key>model</key>
-			<string>iMac13,2</string>
-		</dict>
-		<key>iMac13,2-InternalHub-EHC1</key>
-		<dict>
-			<key>CFBundleIdentifier</key>
-			<string>com.apple.driver.AppleUSBMergeNub</string>
-			<key>IOClass</key>
-			<string>AppleUSBMergeNub</string>
-			<key>IOProviderClass</key>
-			<string>AppleUSB20InternalIntelHub</string>
-			<key>IOProviderMergeProperties</key>
-			<dict>
-				<key>port-count</key>
-				<data>BAAAAA==</data>
-				<key>ports</key>
-				<dict>
-					<key>PRT5</key>
-					<dict>
-						<key>portType</key>
 						<integer>0</integer>
-						<key>port</key>
-						<data>BQAAAA==</data>
 					</dict>
-					<key>PRT6</key>
-					<dict>
-						<key>portType</key>
-						<integer>0</integer>
-						<key>port</key>
-						<data>BgAAAA==</data>
-					</dict>
-					<key>PRT7</key>
-					<dict>
-						<key>portType</key>
-						<integer>0</integer>
-						<key>port</key>
-						<data>BwAAAA==</data>
-					</dict>
-					<key>PRT8</key>
-					<dict>
-						<key>portType</key>
-						<integer>0</integer>
-						<key>port</key>
-						<data>CAAAAA==</data>
-					</dict>
-				</dict>
-			</dict>
-			<key>locationID</key>
-			<integer>487587840</integer>
-			<key>model</key>
-			<string>iMac13,2</string>
-		</dict>
-		<key>iMac13,2-InternalHub-EHC2</key>
-		<dict>
-			<key>CFBundleIdentifier</key>
-			<string>com.apple.driver.AppleUSBMergeNub</string>
-			<key>IOClass</key>
-			<string>AppleUSBMergeNub</string>
-			<key>IOProviderClass</key>
-			<string>AppleUSB20InternalIntelHub</string>
-			<key>IOProviderMergeProperties</key>
-			<dict>
-				<key>port-count</key>
-				<data>BAAAAA==</data>
-				<key>ports</key>
-				<dict>
 					<key>PRT3</key>
 					<dict>
-						<key>portType</key>
+						<key>#port</key>
+						<data>
+						AwAAAA==
+						</data>
+						<key>UsbConnector</key>
 						<integer>0</integer>
-						<key>port</key>
-						<data>AwAAAA==</data>
 					</dict>
 					<key>PRT4</key>
 					<dict>
-						<key>portType</key>
+						<key>#port</key>
+						<data>
+						BAAAAA==
+						</data>
+						<key>UsbConnector</key>
 						<integer>0</integer>
-						<key>port</key>
-						<data>BAAAAA==</data>
 					</dict>
 					<key>PRT5</key>
 					<dict>
-						<key>portType</key>
+						<key>#port</key>
+						<data>
+						BQAAAA==
+						</data>
+						<key>UsbConnector</key>
 						<integer>0</integer>
-						<key>port</key>
-						<data>BQAAAA==</data>
 					</dict>
 					<key>PRT6</key>
 					<dict>
-						<key>portType</key>
+						<key>#port</key>
+						<data>
+						BgAAAA==
+						</data>
+						<key>UsbConnector</key>
+						<integer>0</integer>
+					</dict>
+					<key>PRT7</key>
+					<dict>
+						<key>#port</key>
+						<data>
+						BwAAAA==
+						</data>
+						<key>UsbConnector</key>
+						<integer>0</integer>
+					</dict>
+					<key>PRT8</key>
+					<dict>
+						<key>#port</key>
+						<data>
+						CAAAAA==
+						</data>
+						<key>UsbConnector</key>
+						<integer>0</integer>
+					</dict>
+				</dict>
+			</dict>
+			<key>model</key>
+			<string>MacPro6,1</string>
+		</dict>
+		<key>MacPro6,1-EHC2</key>
+		<dict>
+			<key>CFBundleIdentifier</key>
+			<string>com.apple.driver.AppleUSBHostMergeProperties</string>
+			<key>IOClass</key>
+			<string>AppleUSBHostMergeProperties</string>
+			<key>IOParentMatch</key>
+			<dict>
+				<key>IOPropertyMatch</key>
+				<dict>
+					<key>pcidebug</key>
+					<string>0:26:0</string>
+				</dict>
+			</dict>
+			<key>IOProviderClass</key>
+			<string>AppleUSBEHCIPCI</string>
+			<key>IOProviderMergeProperties</key>
+			<dict>
+				<key>kUSBMuxEnabled</key>
+				<false/>
+				<key>port-count</key>
+				<data>
+				AQAAAA==
+				</data>
+				<key>ports</key>
+				<dict>
+					<key>PRT1</key>
+					<dict>
+						<key>UsbConnector</key>
+						<integer>255</integer>
+						<key>port</key>
+						<data>
+						AQAAAA==
+						</data>
+					</dict>
+					<key>PRT2</key>
+					<dict>
+						<key>#port</key>
+						<data>
+						AgAAAA==
+						</data>
+						<key>UsbConnector</key>
+						<integer>0</integer>
+					</dict>
+				</dict>
+			</dict>
+			<key>model</key>
+			<string>MacPro6,1</string>
+		</dict>
+		<key>MacPro6,1-HUB-1a100000</key>
+		<dict>
+			<key>CFBundleIdentifier</key>
+			<string>com.apple.driver.AppleUSBHostMergeProperties</string>
+			<key>IOClass</key>
+			<string>AppleUSBHostMergeProperties</string>
+			<key>IOProbeScore</key>
+			<integer>5000</integer>
+			<key>IOProviderClass</key>
+			<string>AppleUSB20InternalHub</string>
+			<key>IOProviderMergeProperties</key>
+			<dict>
+				<key>kUSBMuxEnabled</key>
+				<false/>
+				<key>port-count</key>
+				<data>
+				BgAAAA==
+				</data>
+				<key>ports</key>
+				<dict>
+					<key>PRT1</key>
+					<dict>
+						<key>#port</key>
+						<data>
+						AQAAAA==
+						</data>
+						<key>UsbConnector</key>
+						<integer>0</integer>
+					</dict>
+					<key>PRT2</key>
+					<dict>
+						<key>#port</key>
+						<data>
+						AgAAAA==
+						</data>
+						<key>UsbConnector</key>
+						<integer>0</integer>
+					</dict>
+					<key>PRT3</key>
+					<dict>
+						<key>Comment</key>
+						<string>BPP4</string>
+						<key>UsbConnector</key>
 						<integer>0</integer>
 						<key>port</key>
-						<data>BgAAAA==</data>
+						<data>
+						AwAAAA==
+						</data>
+					</dict>
+					<key>PRT4</key>
+					<dict>
+						<key>Comment</key>
+						<string>BPP3</string>
+						<key>UsbConnector</key>
+						<integer>0</integer>
+						<key>port</key>
+						<data>
+						BAAAAA==
+						</data>
+					</dict>
+					<key>PRT5</key>
+					<dict>
+						<key>Comment</key>
+						<string>BPP2</string>
+						<key>UsbConnector</key>
+						<integer>0</integer>
+						<key>port</key>
+						<data>
+						BQAAAA==
+						</data>
+					</dict>
+					<key>PRT6</key>
+					<dict>
+						<key>Comment</key>
+						<string>BPP1</string>
+						<key>UsbConnector</key>
+						<integer>0</integer>
+						<key>port</key>
+						<data>
+						BgAAAA==
+						</data>
 					</dict>
 				</dict>
 			</dict>
 			<key>locationID</key>
 			<integer>437256192</integer>
 			<key>model</key>
-			<string>iMac13,2</string>
+			<string>MacPro6,1</string>
 		</dict>
-		<key>iMac13,2-XHC</key>
+		<key>MacPro6,1-HUB-1d100000</key>
 		<dict>
 			<key>CFBundleIdentifier</key>
-			<string>com.apple.driver.AppleUSBMergeNub</string>
+			<string>com.apple.driver.AppleUSBHostMergeProperties</string>
 			<key>IOClass</key>
-			<string>AppleUSBMergeNub</string>
-			<key>IONameMatch</key>
-			<string>XHC</string>
+			<string>AppleUSBHostMergeProperties</string>
+			<key>IOProbeScore</key>
+			<integer>5000</integer>
+			<key>IOProviderClass</key>
+			<string>AppleUSB20InternalHub</string>
+			<key>IOProviderMergeProperties</key>
+			<dict>
+				<key>kUSBMuxEnabled</key>
+				<false/>
+				<key>port-count</key>
+				<data>
+				CAAAAA==
+				</data>
+				<key>ports</key>
+				<dict>
+					<key>PRT1</key>
+					<dict>
+						<key>#port</key>
+						<data>
+						AQAAAA==
+						</data>
+						<key>UsbConnector</key>
+						<integer>0</integer>
+					</dict>
+					<key>PRT2</key>
+					<dict>
+						<key>#port</key>
+						<data>
+						AgAAAA==
+						</data>
+						<key>UsbConnector</key>
+						<integer>0</integer>
+					</dict>
+					<key>PRT3</key>
+					<dict>
+						<key>#port</key>
+						<data>
+						AwAAAA==
+						</data>
+						<key>UsbConnector</key>
+						<integer>0</integer>
+					</dict>
+					<key>PRT4</key>
+					<dict>
+						<key>#port</key>
+						<data>
+						BAAAAA==
+						</data>
+						<key>UsbConnector</key>
+						<integer>0</integer>
+					</dict>
+					<key>PRT5</key>
+					<dict>
+						<key>Comment</key>
+						<string>FPP3</string>
+						<key>UsbConnector</key>
+						<integer>0</integer>
+						<key>port</key>
+						<data>
+						BQAAAA==
+						</data>
+					</dict>
+					<key>PRT6</key>
+					<dict>
+						<key>Comment</key>
+						<string>FPP4</string>
+						<key>UsbConnector</key>
+						<integer>0</integer>
+						<key>port</key>
+						<data>
+						BgAAAA==
+						</data>
+					</dict>
+					<key>PRT7</key>
+					<dict>
+						<key>Comment</key>
+						<string>CardReader</string>
+						<key>UsbConnector</key>
+						<integer>0</integer>
+						<key>port</key>
+						<data>
+						BwAAAA==
+						</data>
+					</dict>
+					<key>PRT8</key>
+					<dict>
+						<key>Comment</key>
+						<string>CardReaderUSB</string>
+						<key>UsbConnector</key>
+						<integer>0</integer>
+						<key>port</key>
+						<data>
+						CAAAAA==
+						</data>
+					</dict>
+				</dict>
+			</dict>
+			<key>locationID</key>
+			<integer>487587840</integer>
+			<key>model</key>
+			<string>MacPro6,1</string>
+		</dict>
+		<key>MacPro6,1-XHC</key>
+		<dict>
+			<key>CFBundleIdentifier</key>
+			<string>com.apple.driver.AppleUSBHostMergeProperties</string>
+			<key>IOClass</key>
+			<string>AppleUSBHostMergeProperties</string>
+			<key>IOParentMatch</key>
+			<dict>
+				<key>IOPropertyMatch</key>
+				<dict>
+					<key>pcidebug</key>
+					<string>0:20:0</string>
+				</dict>
+			</dict>
 			<key>IOProviderClass</key>
 			<string>AppleUSBXHCIPCI</string>
 			<key>IOProviderMergeProperties</key>
@@ -195,55 +391,93 @@
 				<key>kUSBMuxEnabled</key>
 				<true/>
 				<key>port-count</key>
-				<data>CAAAAA==</data>
+				<data>
+				CAAAAA==
+				</data>
 				<key>ports</key>
 				<dict>
-					<key>HS01</key>
+					<key>SS01</key>
 					<dict>
 						<key>UsbConnector</key>
 						<integer>255</integer>
 						<key>port</key>
-						<data>AQAAAA==</data>
-					</dict>
-					<key>HS02</key>
-					<dict>
-						<key>UsbConnector</key>
-						<integer>3</integer>
-						<key>port</key>
-						<data>AgAAAA==</data>
-					</dict>
-					<key>SS01</key>
-					<dict>
-						<key>UsbConnector</key>
-						<integer>3</integer>
-						<key>port</key>
-						<data>BQAAAA==</data>
+						<data>
+						AQAAAA==
+						</data>
 					</dict>
 					<key>SS02</key>
 					<dict>
 						<key>UsbConnector</key>
 						<integer>3</integer>
 						<key>port</key>
-						<data>BgAAAA==</data>
+						<data>
+						AgAAAA==
+						</data>
 					</dict>
 					<key>SS03</key>
 					<dict>
+						<key>#port</key>
+						<data>
+						AwAAAA==
+						</data>
 						<key>UsbConnector</key>
 						<integer>3</integer>
-						<key>port</key>
-						<data>BwAAAA==</data>
 					</dict>
 					<key>SS04</key>
 					<dict>
+						<key>#port</key>
+						<data>
+						BAAAAA==
+						</data>
+						<key>UsbConnector</key>
+						<integer>3</integer>
+					</dict>
+					<key>SS05</key>
+					<dict>
+						<key>#port</key>
+						<data>
+						BQAAAA==
+						</data>
+						<key>UsbConnector</key>
+						<integer>3</integer>
+					</dict>
+					<key>SS06</key>
+					<dict>
+						<key>Comment</key>
+						<string>FPP2SS</string>
 						<key>UsbConnector</key>
 						<integer>3</integer>
 						<key>port</key>
-						<data>CAAAAA==</data>
+						<data>
+						BgAAAA==
+						</data>
+					</dict>
+					<key>SS07</key>
+					<dict>
+						<key>Comment</key>
+						<string>BPP3SS</string>
+						<key>UsbConnector</key>
+						<integer>3</integer>
+						<key>port</key>
+						<data>
+						BwAAAA==
+						</data>
+					</dict>
+					<key>SS08</key>
+					<dict>
+						<key>Comment</key>
+						<string>BPP4SS</string>
+						<key>UsbConnector</key>
+						<integer>3</integer>
+						<key>port</key>
+						<data>
+						CAAAAA==
+						</data>
 					</dict>
 				</dict>
 			</dict>
 			<key>model</key>
-			<string>iMac13,2</string>
+			<string>MacPro6,1</string>
 		</dict>
 	</dict>
 	<key>OSBundleRequired</key>
