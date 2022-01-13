@@ -1,5 +1,9 @@
 # GA-Z77X-D3H Monterey Hackintosh 🍎
 
+## ⚠️⚠️ Warning: Abandonware Ahead ⚠️⚠️
+
+This project is no longer actively maintained. In January 2022 I have upgraded from my Z77 Ivy Bridge Hackintosh to an Z590 Rocket Lake Hackintosh. See more at [https://github.com/nickw444/opencore-efi-z590](https://github.com/nickw444/opencore-efi-z590).
+
 ## 🖥 Hardware Details
 | Component | Details  |
 |---|---|
